@@ -4,13 +4,9 @@ import {useCart} from "../Services/cartContext";
 
 function CoffeeDisplay(p) {
     const props = p.props
-    const {dispatch} = useCart()
 
     function addToCart () {
-        dispatch({
-            type: "add",
-            id: props.id
-        })
+        console.log('to impliment')
     }
 
     return(

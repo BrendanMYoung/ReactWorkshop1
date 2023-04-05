@@ -16,6 +16,7 @@ const pages = [
     }
 ]
 export default function PageRouter() {
+    console.log('going')
     return (
         <>
             <Navbar pages={pages} />

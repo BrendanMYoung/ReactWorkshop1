@@ -1,17 +1,13 @@
-import {useCart} from "../Services/cartContext";
+//import {useCart} from "../Services/cartContext";
 import useFetch from "../Services/useFetch";
 import LoadingPage from "./LoadingPage";
 import {Typography, Card, Container, CardContent, Button, Grid} from "@mui/material";
 import CartItem from "../Components/CartItem";
 
 function Cartpage() {
-    const { cart, dispatch } = useCart()
-    const {data: products, loading, error} = useFetch("coffee/hot")
-
-    if (loading) return <LoadingPage/>
-    if (error) return <div>Error loading...</div>
-
-    const numOfItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+    const [data] = useFetch("coffee/hot")
+    const cart = []
+    const numOfItemsInCart = 0;
     return(
         <Container>
             <Card>
@@ -24,11 +20,10 @@ function Cartpage() {
                 </CardContent>
                 <CardContent>
                     <Grid>
-                        {cart.map(p => <CartItem item={p} key={p.id} products={products}/>)}
                     </Grid>
                 </CardContent>
                 <CardContent>
-                    <Button onClick={() => dispatch({type: "empty"})}>Clear Cart</Button>
+                    <Button onClick={() => console.log("Clearing...")}>Clear Cart</Button>
                 </CardContent>
             </Card>
         </Container>

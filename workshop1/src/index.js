@@ -5,12 +5,11 @@ import PageRouter from "./Pages/PageRouter";
 import {BrowserRouter} from "react-router-dom";
 import {CartProvider} from "./Services/cartContext";
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log('starting')
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-          <CartProvider>
-              <PageRouter />
-          </CartProvider>
+          <PageRouter />
       </BrowserRouter>
   </React.StrictMode>
 );

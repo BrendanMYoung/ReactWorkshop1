@@ -1,8 +1,9 @@
 import React, { useReducer, useEffect, useContext } from "react";
 import cartReducer from "./cartReducer";
 
-export const CartContext = React.createContext(null);
+// Create the React Context
 
+// Initialize LocalStorage for Context if it so not exist already (default value)
 let initialCart;
 try {
     initialCart = JSON.parse(localStorage.getItem("cart")) ?? [];
@@ -11,26 +12,11 @@ try {
     initialCart = [];
 }
 
+// Create a Provider for the reducer that gets wrapped into the project at a top level
 export function CartProvider(props) {
-    const [cart, dispatch] = useReducer(cartReducer, initialCart);
-    useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
-    const contextValue = {
-        cart,
-        dispatch,
-    };
-    return (
-        <CartContext.Provider value={contextValue}>
-            {props.children}
-        </CartContext.Provider>
-    );
-}
 
+}
+// Create the custom hook for the cartContext to use
 export function useCart() {
-    const context = useContext(CartContext);
-    if (!context) {
-        throw new Error(
-            "useCart must be used within a CartProvider. Wrap a parent component in <CartProvider> to fix this error."
-        );
-    }
-    return context;
+
 }
